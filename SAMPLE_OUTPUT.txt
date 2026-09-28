@@ -1,0 +1,29 @@
+Домашнее задание №6
+Теория и практика многопоточности
+Доступно процессоров JVM: 4
+
+=== 1. volatile: безопасная остановка потока ===
+[volatile] Рабочий поток запущен.
+[volatile] Запрошена остановка.
+[volatile] Рабочий поток остановлен. Итераций: 49205610
+
+=== 2. AtomicInteger: потокобезопасный счётчик ===
+[AtomicInteger] Ожидаемое значение: 400000
+[AtomicInteger] Фактическое значение: 400000
+[AtomicInteger] Время: 11.829 ms
+
+=== 3. AtomicReference: singleton-кэш ===
+[AtomicReference] Значение в кэше: Cached value created by cache-worker-2, attempt=4
+[AtomicReference] Различных опубликованных значений: 1
+[AtomicReference] Попыток создать значение: 4
+
+=== Нагрузочное тестирование ===
+[perf] volatile-read: 10.293 ms
+[perf] AtomicInteger: 17.046 ms, result=1000000
+[perf] AtomicReference cache: 14.021 ms, creationAttempts=1
+
+=== 4. Некорректный пример: race condition ===
+[unsafe int] Ожидаемое значение: 400000
+[unsafe int] Фактическое значение: 221978
+[unsafe int] Потеряно инкрементов: 178022
+
